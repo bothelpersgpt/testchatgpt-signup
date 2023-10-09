@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign Up</title>
+  <script>
+    const bannedUsers = [
+      { username: "john", reason: "Offensive behavior" },
+      { username: "emma", reason: "Spamming" },
+      { username: "alex", reason: "Cheating" }
+      // Add more banned users here...
+    ];
+    
+    function checkBannedUser(username) {
+      for (let i = 0; i < bannedUsers.length; i++) {
+        if (bannedUsers[i].username === username) {
+          return bannedUsers[i].reason;
+        }
+      }
+      return null; // Return null if user is not banned
+    }
+    
+    function signUp() {
+      const username = document.getElementById("username").value;
+      const reason = checkBannedUser(username);
+      
+      if (reason) {
+        alert("You are banned. Reason: " + reason);
+      } else {
+        alert("Sign up successful!");
+        window.location.href = "file:///home/chronos/u-7335e07462af0889fea7db6698100c2c75b912e8/MyFiles/Downloads/Chatgpt%20(1).html";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form onsubmit="event.preventDefault(); signUp();">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <input type="submit" value="Sign Up">
+  </form>
+</body>
+</html>
