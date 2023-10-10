@@ -1,39 +1,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CHatgpt Sign up</title>
+  <title>Chatgpt Sign up</title>
   <script>
     const bannedUsers = [
-      { username: "Tony", reason: "Tony we trying to see your behavior contact us here r.kamguia@stjeromeschool.net to unban you" },
-      { username: "Enzo", reason: "enzo we are sure you are gonna be doing bad stuff contact r.kamguia@stjeromeschool.net to unban you" },
-      { username: "tony", reason: "Tony we trying to see your behavior contact us here r.kamguia@stjeromeschool.net to unban you" },
-		 { username: "enzo", reason: "enzo we are sure you are gonna be doing bad stuff contact r.kamguia@stjeromeschool.net to unban you"},
-		 { username: "enzo-bertucci", reason: "enzo we are sure you are gonna be doing bad stuff contact r.kamguia@stjeromeschool.net to unban you"},
-		 { username: "Admin", reason: " you are not the Admin to be the Admin is to contact us here  r.kamguia@stjeromeschool.net"},
-		 { username: "admin", reason: " you are not the admin to be the admin is to contact us here  r.kamguia@stjeromeschool.net"},
-		{ username: "Enzo-bertucci", reason: "enzo we are sure you are gonna be doing bad stuff contact r.kamguia@stjeromeschool.net to unban you"},
-		{ username: "Enzo-Bertucci", reason: "enzo we are sure you are gonna be doing bad stuff contact r.kamguia@stjeromeschool.net to unban you"},
-		  { username: "Stacy", reason: "  for some reason  you have got in to the system and changing it "},
-		 { username: "stacy", reason: " for some reason  you have got in to the system and changing it "},
-		 
+      { username: "Tony", reason: "Tony, we are trying to see your behavior. Contact us here: r.kamguia@stjeromeschool.net to unban you." },
+      { username: "Enzo", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
+      { username: "tony", reason: "Tony, we are trying to see your behavior. Contact us here: r.kamguia@stjeromeschool.net to unban you." },
+      { username: "enzo", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
+      { username: "enzo-bertucci", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
+      { username: "Admin", reason: "You are not the Admin. To be the Admin, contact us here: r.kamguia@stjeromeschool.net." },
+      { username: "admin", reason: "You are not the admin. To be the admin, contact us here: r.kamguia@stjeromeschool.net." },
+      { username: "Enzo-bertucci", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
+      { username: "Enzo-Bertucci", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
+      { username: "Stacy", reason: "For some reason, you have got into the system and are changing it." },
+      { username: "stacy", reason: "For some reason, you have got into the system and are changing it." },
       // Add more banned users here...
     ];
-    
+
+    const terminatedPlayers = [
+      { username: "Vega", reason: "we know it you enzo." },
+      { username: "vega", reason: "we know it you enzo.." },
+      // Add more terminated users here...
+    ];
+
     function checkBannedUser(username) {
       for (let i = 0; i < bannedUsers.length; i++) {
         if (bannedUsers[i].username === username) {
           return bannedUsers[i].reason;
         }
       }
-      return null; // Return null if user is not banned
+      return null; // Return null if the user is not banned
     }
-    
+
+    function checkTerminatedPlayer(username) {
+      for (let i = 0; i < terminatedPlayers.length; i++) {
+        if (terminatedPlayers[i].username === username) {
+          return terminatedPlayers[i].reason;
+        }
+      }
+      return null; // Return null if the user is not terminated
+    }
+
     function signUp() {
       const username = document.getElementById("username").value;
-      const reason = checkBannedUser(username);
-      
-      if (reason) {
-        alert("You are banned. Reason: " + reason);
+      const bannedReason = checkBannedUser(username);
+      const terminatedReason = checkTerminatedPlayer(username);
+
+      if (bannedReason) {
+        alert("You are banned. Reason: " + bannedReason);
+      } else if (terminatedReason) {
+        alert("This user is terminated. Reason: " + terminatedReason);
       } else {
         alert("Sign up successful!");
         window.location.href = "https://github.com/bothelpersgpt/chatgptbots/blob/main";
@@ -49,6 +66,8 @@
     
     <input type="submit" value="Sign Up">
   </form>
+
+
+  <h1>Did you know over 2,091 People came here</h1>
 </body>
 </html>
-<h1> Did you know over  2,091  People came here</h1>
