@@ -3,24 +3,16 @@
 <head>
   <title>Chatgpt Sign up</title>
   <script>
-    const bannedUsers = [
-      { username: "Tony", reason: "Tony, we are trying to see your behavior. Contact us here: r.kamguia@stjeromeschool.net to unban you." },
-      { username: "Enzo", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
-      { username: "tony", reason: "Tony, we are trying to see your behavior. Contact us here: r.kamguia@stjeromeschool.net to unban you." },
-      { username: "enzo", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
-      { username: "enzo-bertucci", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
-      { username: "Admin", reason: "You are not the Admin. To be the Admin, contact us here: r.kamguia@stjeromeschool.net." },
-      { username: "admin", reason: "You are not the admin. To be the admin, contact us here: r.kamguia@stjeromeschool.net." },
-      { username: "Enzo-bertucci", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
-      { username: "Enzo-Bertucci", reason: "Enzo, we are sure you are going to be doing bad stuff. Contact r.kamguia@stjeromeschool.net to unban you." },
-      { username: "Stacy", reason: "For some reason, you have got into the system and are changing it." },
-      { username: "stacy", reason: "For some reason, you have got into the system and are changing it." },
-      // Add more banned users here...
-    ];
-
+    const bannedUsers = JSON.parse(localStorage.getItem('bannedUsers')) || [];
     const terminatedPlayers = [
-      { username: "Vega", reason: "we know it you enzo." },
-      { username: "vega", reason: "we know it you enzo.." },
+      { username: "fuck", reason: "Terminated for an unknown reason." },
+      { username: "bitch", reason: "Terminated for an unknown reason." },
+      { username: "Fuck", reason: "Terminated for an unknown reason." },
+      { username: "Bitch", reason: "Terminated for an unknown reason." },
+      { username: "hell", reason: "Terminated for an unknown reason." },
+      { username: "Hell", reason: "Terminated for an unknown reason." },
+      { username: "Noli", reason: "Terminated for hacking and making players say bad stuff in the username container." },
+      { username: "noli", reason: "Terminated for hacking and making players say bad stuff in the username container." }
       // Add more terminated users here...
     ];
 
@@ -42,18 +34,34 @@
       return null; // Return null if the user is not terminated
     }
 
-    function signUp() {
-      const username = document.getElementById("username").value;
-      const bannedReason = checkBannedUser(username);
-      const terminatedReason = checkTerminatedPlayer(username);
+    function updateLocalStorage() {
+      localStorage.setItem('bannedUsers', JSON.stringify(bannedUsers));
+    }
 
-      if (bannedReason) {
-        alert("You are banned. Reason: " + bannedReason);
-      } else if (terminatedReason) {
-        alert("This user is terminated. Reason: " + terminatedReason);
+    function signUp() {
+      const code = prompt("Please enter the admin code to access the panel:");
+      
+      if (code === "Connor/admin") {
+        const username = prompt("Enter the username to ban:");
+        const reason = prompt("Enter the reason for banning:");
+        
+        bannedUsers.push({ username, reason });
+        updateLocalStorage();
+        
+        alert("User banned successfully.");
       } else {
-        alert("Sign up successful!");
-        window.location.href = "https://github.com/bothelpersgpt/chatgptbots/blob/main";
+        const username = document.getElementById("username").value;
+        const bannedReason = checkBannedUser(username);
+        const terminatedReason = checkTerminatedPlayer(username);
+
+        if (bannedReason) {
+          alert("You are banned. Reason: " + bannedReason);
+        } else if (terminatedReason) {
+          alert("This user is terminated. Reason: " + terminatedReason);
+        } else {
+          alert("Sign up successful!");
+          window.location.href = "https://github.com/bothelpersgpt/chatgptbots/blob/main";
+        }
       }
     }
   </script>
@@ -63,11 +71,11 @@
   <form onsubmit="event.preventDefault(); signUp();">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required><br><br>
-    
+
     <input type="submit" value="Sign Up">
-  </form>
+  </form> 
 
 
-  <h1>Did you know over 2,091 People came here</h1>
+  <h1>Did you know over 9,999 users have already signed up?</h1>
 </body>
 </html>
