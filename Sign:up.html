@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chatgpt Sign up</title>
+  <script>
+    const bannedUsers = [
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      { username: "", reason: "" },
+      // Add more banned users here...
+    ];
+
+    const terminatedPlayers = [
+      { username: "Admin", reason: "unknown reason." },
+      { username: "admin", reason: "unknown reason." },
+      // Add more terminated users here...
+    ];
+
+    function checkBannedUser(username) {
+      for (let i = 0; i < bannedUsers.length; i++) {
+        if (bannedUsers[i].username === username) {
+          return bannedUsers[i].reason;
+        }
+      }
+      return null; // Return null if the user is not banned
+    }
+
+    function checkTerminatedPlayer(username) {
+      for (let i = 0; i < terminatedPlayers.length; i++) {
+        if (terminatedPlayers[i].username === username) {
+          return terminatedPlayers[i].reason;
+        }
+      }
+      return null; // Return null if the user is not terminated
+    }
+
+    function signUp() {
+      const username = document.getElementById("username").value;
+      const bannedReason = checkBannedUser(username);
+      const terminatedReason = checkTerminatedPlayer(username);
+
+      if (bannedReason) {
+        alert("You are banned. Reason: " + bannedReason);
+      } else if (terminatedReason) {
+        alert("This user is terminated. Reason: " + terminatedReason);
+      } else {
+        alert("Sign up successful!");
+        window.location.href = "https://github.com/bothelpersgpt/chatgptbots/blob/main";
+      }
+    }
+  </script>
+</head>
+<body>
+  <h1>Sign Up</h1>
+  <form onsubmit="event.preventDefault(); signUp();">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required><br><br>
+    
+    <input type="submit" value="Sign Up">
+  </form>
+
+
+  <h1>Did you know over 2,091 People came here</h1>
+</body>
+</html>
