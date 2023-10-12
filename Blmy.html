@@ -40,14 +40,14 @@
 
     function signUp() {
       const code = prompt("Please enter the admin code to access the panel:");
-      
+
       if (code === "Admin") {
         const username = prompt("Enter the username to ban:");
         const reason = prompt("Enter the reason for banning:");
-        
+
         bannedUsers.push({ username, reason });
         updateLocalStorage();
-        
+
         alert("User banned successfully.");
       } else {
         const username = document.getElementById("username").value;
@@ -64,6 +64,20 @@
         }
       }
     }
+    
+    function checkStatus() {
+      const username = document.getElementById("username").value;
+      const bannedReason = checkBannedUser(username);
+      const terminatedReason = checkTerminatedPlayer(username);
+
+      if (bannedReason) {
+        alert("This user is banned. Reason: " + bannedReason);
+      } else if (terminatedReason) {
+        alert("This user is terminated. Reason: " + terminatedReason);
+      } else {
+        alert("This user is not banned or terminated.");
+      }
+    }
   </script>
 </head>
 <body>
@@ -74,7 +88,8 @@
 
     <input type="submit" value="Sign Up">
   </form> 
-
+  
+  <button onclick="checkStatus()">Check User Status</button>
 
   <h1>Did you know over 9,999 users have already signed up?</h1>
 </body>
